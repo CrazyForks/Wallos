@@ -7,10 +7,12 @@ let i18n = {
   failed_to_load_subscription: "Error al cargar la suscripción",
   edit_subscription: "Editar suscripción",
   add_subscription: "Añadir suscripción",
+  confirm_delete_subscription: "¿Estás seguro de que quieres eliminar esta suscripción?",
   // Settings
   network_response_error: "Error en la respuesta de la red",
   failed_add_member: "Error al añadir miembro",
   member: "Miembro",
+  email: "Correo electrónico",
   save_member: "Guardar miembro",
   delete_member: "Eliminar miembro",
   failed_remove_member: "Error al eliminar miembro",
@@ -31,4 +33,15 @@ let i18n = {
   unknown_error: "Error desconocido, por favor inténtalo de nuevo.",
   error_saving_notification_data: "Error al guardar los datos de notificación",
   error_sending_notification: "Error al enviar la notificación",
+  delete_account_confirmation: "¿Estás seguro de que quieres eliminar tu cuenta?",
+  this_will_delete_all_data: "Esto eliminará todos tus datos y no se podrán recuperar. ¿Continuar?",
+  success: "Éxito",
+  copied_to_clipboard: "Copiado al portapapeles",
+  // Calendar
+  price: "Precio",
+  category: "Categoría",
+  paid_by: "Pagado por",
+  payment_method: "Método de pago",
+  notes: "Notas",
+  export: "Exportar",
 }

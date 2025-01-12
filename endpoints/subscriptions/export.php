@@ -1,41 +1,63 @@
 <?php
-
 require_once '../../includes/connect_endpoint.php';
 
-session_start();
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    die(json_encode([
+        "success" => false,
+        "message" => translate('session_expired', $i18n)
+    ]));
+}
 
 require_once '../../includes/getdbkeys.php';
 
-$query = "SELECT * FROM subscriptions";
+$subscriptions = array();
 
-$result = $db->query($query);
-if ($result) {
-    $subscriptions = array();
-    while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-        // Map foreign keys to their corresponding values
-        $row['currency'] = $currencies[$row['currency_id']];
-        $row['payment_method'] = $payment_methods[$row['payment_method_id']];
-        $row['payer_user'] = $members[$row['payer_user_id']];
-        $row['category'] = $categories[$row['category_id']];
-        $row['cycle'] = $cycles[$row['cycle']];
-        $row['frequency'] = $frequencies[$row['frequency']];
-        
-        $subscriptions[] = $row;
+$query = "SELECT * FROM subscriptions WHERE user_id = :userId";
+$stmt = $db->prepare($query);
+$stmt->bindValue(':userId', $userId, SQLITE3_INTEGER);
+$result = $stmt->execute();
+
+while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+    $cycle = $cycles[$row['cycle']]['name'];
+    $frequency =$row['frequency'];
+
+    $cyclesMap = array(
+        'Daily' => 'Days',
+        'Weekly' => 'Weeks',
+        'Monthly' => 'Months',
+        'Yearly' => 'Years'
+    );
+
+    if ($frequency == 1) {
+        $cyclePrint = $cycle;
+    } else {
+        $cyclePrint = "Every " . $frequency . " " . $cyclesMap[$cycle];
     }
-    
-    // Output JSON
-    $json = json_encode($subscriptions, JSON_PRETTY_PRINT);
-    
-    // Set headers for file download
-    header('Content-Type: application/json');
-    header('Content-Disposition: attachment; filename="subscriptions.json"');
-    header('Pragma: no-cache');
-    header('Expires: 0');
-    
-    // Output JSON for download
-    echo $json;
-} else {
-    echo json_encode(array('error' => 'Failed to fetch subscriptions.'));
+
+    $subscriptionDetails = array(
+        'Name' => str_replace(',', ' ', $row['name']),
+        'Payment Cycle' => $cyclePrint,
+        'Next Payment' => $row['next_payment'],
+        'Renewal' => $row['auto_renew'] ? 'Automatic' : 'Manual',
+        'Category' => str_replace(',', ' ', $categories[$row['category_id']]['name']),
+        'Payment Method' => str_replace(',', ' ', $payment_methods[$row['payment_method_id']]['name']),
+        'Paid By' => str_replace(',', ' ', $members[$row['payer_user_id']]['name']),
+        'Price' => $currencies[$row['currency_id']]['symbol'] . $row['price'],
+        'Notes' => str_replace(',', ' ', $row['notes']),
+        'URL' => $row['url'],
+        'State' => $row['inactive'] ? 'Disabled' : 'Enabled',
+        'Notifications' => $row['notify'] ? 'Enabled' : 'Disabled',
+        'Cancellation Date' => $row['cancellation_date'],
+        'Active' => $row['inactive'] ? 'No' : 'Yes',
+    );
+
+    $subscriptions[] = $subscriptionDetails;
 }
+
+die(json_encode([
+    "success" => true,
+    "subscriptions" => $subscriptions
+]));
+
 
 ?>

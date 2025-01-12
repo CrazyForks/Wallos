@@ -1,5 +1,6 @@
 <?php
-function errorHandler($severity, $message, $file, $line) {
+function errorHandler($severity, $message, $file, $line)
+{
     throw new ErrorException($message, 0, $severity, $file, $line);
 }
 
@@ -19,8 +20,8 @@ try {
 $completedMigrations = [];
 
 $migrationTableExists = $db
-        ->query('SELECT name FROM sqlite_master WHERE type="table" AND name="migrations"')
-        ->fetchArray(SQLITE3_ASSOC) !== false;
+    ->query('SELECT name FROM sqlite_master WHERE type="table" AND name="migrations"')
+    ->fetchArray(SQLITE3_ASSOC) !== false;
 
 if ($migrationTableExists) {
     $migrationQuery = $db->query('SELECT migration FROM migrations');
@@ -33,6 +34,15 @@ $allMigrations = glob('migrations/*.php');
 if (count($allMigrations) == 0) {
     $allMigrations = glob('../../migrations/*.php');
 }
+
+$allMigrations = array_map(function ($migration) {
+    return str_replace('../../', '', $migration);
+}, $allMigrations);
+
+$completedMigrations = array_map(function ($migration) {
+    return str_replace('../../', '', $migration);
+}, $completedMigrations);
+
 $requiredMigrations = array_diff($allMigrations, $completedMigrations);
 
 if (count($requiredMigrations) === 0) {
@@ -40,6 +50,9 @@ if (count($requiredMigrations) === 0) {
 }
 
 foreach ($requiredMigrations as $migration) {
+    if (!file_exists($migration)) {
+        $migration = '../../' . $migration;
+    }
     require_once $migration;
 
     $stmtInsert = $db->prepare('INSERT INTO migrations (migration) VALUES (:migration)');
