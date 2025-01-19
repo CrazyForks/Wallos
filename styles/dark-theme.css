@@ -3,23 +3,33 @@ body {
     color: #E0E0E0;
 }
 
-body > header {
+body>header {
     background-color: #222;
 }
 
-header .logo .logo-image {
-    background-image: url("../images/wallossolidwhite.png");
+svg .text-color {
+    fill: #E0E0E0;
+}
+
+.split-header>h2 .header-subtitle {
+    color: #A9A9A9;
 }
 
 .subscription,
 .subscription-form,
+.subscription-modal,
 .account-section,
 .avatar-select,
 .logo-search,
+.icon-search,
 .dropdown-content,
 .sort-options,
 .statistic,
-.graph {
+.graph,
+.filtermenu-content,
+.subscription-main .actions,
+.calendar,
+.totp-popup {
     background-color: #222;
     border: 1px solid #333;
     box-shadow: 0 2px 5px rgba(120, 120, 120, 0.1);
@@ -37,10 +47,42 @@ header .logo .logo-image {
     background-color: #333333;
 }
 
-.subscription-form h3 {
-    color: #FFF;
-    border-bottom: 1px solid #EEE;
+.filtermenu-content .filter-item:hover,
+.filtermenu-content .filter-title:hover {
+    background-color: #333333;
 }
+
+.subscription-form h3,
+.subscription-modal h3 {
+    color: #FFF;
+}
+
+.subscription.inactive {
+    background-color: #222;
+    color: rgba(200, 200, 200, 0.6);
+    box-shadow: 0 2px 5px rgba(50, 50, 50, 0.1);
+}
+
+.subscription-main .actions {
+    color: #E0E0E0
+}
+
+.subscription-main .actions>li {
+    border-bottom: 1px solid #555;
+    border-color: #666;
+}
+
+.subscription-main .actions>li:hover {
+    background-color: #333;
+}
+
+.subscription-main .actions>li:last-of-type {
+    border: none;
+}
+
+.subscription-container {
+    background-color: #222;
+  }
 
 .close-form {
     color: #EEE;
@@ -66,12 +108,59 @@ select::placeholder {
     color: #BBB;
 }
 
+input[type="text"]:disabled,
+input[type="email"]:disabled,
+input[type="password"]:disabled,
+input[type="date"]:disabled,
+input[type="number"]:disabled,
+select:disabled {
+    background-color: #999;
+    border-color: #666;
+    cursor: not-allowed;
+}
+
+button.secondary-button,
+button.button.secondary-button,
 input[type="button"].secondary-button {
     background-color: #222;
 }
 
+button.button.secondary-button:hover,
+button.secondary-button:hover,
 input[type="button"].secondary-button:hover {
     background-color: #111;
+}
+
+input[type="color"] {
+    background-color: #F2F2F2;
+}
+
+textarea {
+    background-color: #555;
+    border: 1px solid #666;
+    color: #E0E0E0;
+}
+
+.avatar-select .avatar-list .remove-avatar {
+    background-color: #222;
+}
+
+.avatar-select .avatar-list>img,
+.avatar-select .avatar-list .avatar-container>img {
+    border: 1px solid #999;
+}
+
+.avatar-select .avatar-list>img:hover,
+.avatar-select .avatar-list .avatar-container>img:hover {
+    border: 1px solid #EEE;
+}
+
+.avatar-select .avatar-list .remove-avatar:hover {
+    background-color: #666;
+}
+
+.account-notification-section-header:hover {
+    background-color: #444;
 }
 
 .toast {
@@ -93,18 +182,98 @@ input[type="button"].secondary-button:hover {
 }
 
 .logo-preview:after {
-    color: #007bff;
+    color: var(--main-color);
 }
 
-.sort-options > ul > li {
+.sort-options>ul>li {
     border-bottom: 1px solid #555;
     color: #DDD;
 }
 
-.sort-options > ul > li:hover {
+.sort-options>ul>li:hover {
     background-color: #444;
 }
 
 .payment-name {
     color: #FFF;
+}
+
+.payments-list .payments-payment .delete-payment-method {
+    color: #FFF;
+}
+
+.calendar .calendar-body .calendar-cell .calendar-cell-header {
+    background-color: #111;
+}
+
+.calendar .calendar-body .calendar-cell {
+    border-right: 1px solid #111;
+}
+
+button.dark-theme-button {
+    color: #E0E0E0;
+}
+
+button.dark-theme-button:hover {
+    background-color: #111;
+}
+
+.account-notifications-section {
+    border: 1px solid #666;
+}
+
+input[type="checkbox"]+label::before,
+input[type="radio"]+label::before {
+    background: #555;
+    border: 1px solid #666;
+}
+
+input[type="checkbox"]:disabled+label::before,
+input[type="radio"]:disabled+label::before {
+    background-color: #333;
+    border-color: #222;
+    cursor: not-allowed;
+}
+
+input {
+    color-scheme: dark;
+}
+
+.update-banner {
+    color: #FFF;
+}
+
+.update-banner>span>a {
+    color: #FFF;
+}
+
+.totp-qrcode-container {
+    padding: 14px;
+    border: 1px solid #DDD;
+    border-radius: 8px;
+}
+
+.totp-backup-codes {
+    background-color: #111;
+    border: 2px dashed #444;
+}
+
+.mobile-nav-image {
+    background-image: url("../images/siteimages/mobilenavdark.png");
+}
+
+@media (max-width: 768px) {
+    .mobile-nav {
+        background-color: #222;
+        border-top: #111;
+        box-shadow: 0 -2px 5px rgba(120, 120, 120, 0.1);
+    }
+
+    .mobile-nav>a {
+        color: #909090;
+    }
+
+    .mobile-nav>a.active {
+        color: #f0f0F0;
+    }
 }

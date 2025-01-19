@@ -7,10 +7,12 @@ let i18n = {
   failed_to_load_subscription: "Fehler beim Laden des Abonnements",
   edit_subscription: "Abonnement bearbeiten",
   add_subscription: "Abonnement hinzufügen",
+  confirm_delete_subscription: "Sind Sie sicher, dass Sie dieses Abonnement löschen möchten?",
   // Settings
   network_response_error: "Netzwerkfehler",
   failed_add_member: "Hinzufügen von Mitglied fehlgeschlagen",
   member: "Mitglied",
+  email: "E-Mail",
   save_member: "Mitglied speichern",
   delete_member: "Mitglied löschen",
   failed_remove_member: "Mitglied konnte nicht gelöscht werden",
@@ -33,4 +35,15 @@ let i18n = {
   error_saving_notification_data:
     "Fehler beim Speichern der Benachrichtigungsangaben",
   error_sending_notification: "Fehler beim Senden der Benachrichtigung",
+  delete_account_confirmation: "Möchten Sie Ihr Konto wirklich löschen?",
+  this_will_delete_all_data: "Dadurch werden alle Daten gelöscht und können nicht wiederhergestellt werden. Fortfahren?",
+  success: "Erfolg",
+  copied_to_clipboard: "In die Zwischenablage kopiert",
+  // Calendar
+  price: "Preis",
+  category: "Kategorie",
+  paid_by: "Bezahlt von",
+  payment_method: "Zahlungsmethode",
+  notes: "Notizen",
+  export: "Exportieren",
 }

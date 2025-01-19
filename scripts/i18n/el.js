@@ -7,10 +7,12 @@ let i18n = {
   failed_to_load_subscription: "Απέτυχε η φόρτωση της συνδρομής",
   edit_subscription: "Επεξεργασία συνδρομής",
   add_subscription: "Προσθήκη συνδρομής",
+  confirm_delete_subscription: "Είστε σίγουρος ότι θέλετε να διαγράψετε αυτή τη συνδρομή;",
   // Settings
   network_response_error: "Η ανταπόκριση του δικτύου δεν ήταν εντάξει",
   failed_add_member: "Αποτυχία προσθήκης μέλους",
   member: "Μέλος",
+  email: "Email",
   save_member: "Αποθήκευση μέλους",
   delete_member: "Διαγραφή μέλους",
   failed_remove_member: "Αποτυχία διαγραφής μέλους",
@@ -31,4 +33,15 @@ let i18n = {
   unknown_error: "Άγνωστο σφάλμα, προσπάθησε ξανά.",
   error_saving_notification_data: "Σφάλμα αποθήκευσης δεδομένων ειδοποίησης",
   error_sending_notification: "Σφάλμα αποστολής ειδοποίησης",
+  delete_account_confirmation: "Είστε σίγουρος ότι θέλετε να διαγράψετε το λογαριασμό σας;",
+  this_will_delete_all_data: "Αυτό θα διαγράψει όλα τα δεδομένα σας και δεν μπορεί να ανακτηθεί. Να συνεχίσω;",
+  success: "Επιτυχία",
+  copied_to_clipboard: "Αντιγράφηκε στο πρόχειρο",
+  // Calendar
+  price: "Τιμή",
+  category: "Κατηγορία",
+  paid_by: "Πληρώθηκε από",
+  payment_method: "Μέθοδος πληρωμής",
+  notes: "Σημειώσεις",
+  export: "Εξαγωγή",
 }

@@ -7,10 +7,12 @@ let i18n = {
   failed_to_load_subscription: "Abonelik yüklenemedi",
   edit_subscription: "Aboneliği Düzenle",
   add_subscription: "Abonelik Ekle",
+  confirm_delete_subscription: "Bu aboneliği silmek istediğinizden emin misiniz?",
   // Ayarlar
   network_response_error: "Ağ yanıtı kabul edilmedi",
   failed_add_member: "Üye eklenemedi",
   member: "Üye",
+  email: "E-posta",
   save_member: "Üyeyi Kaydet",
   delete_member: "Üyeyi Sil",
   failed_remove_member: "Üye silinmedi",
@@ -30,7 +32,18 @@ let i18n = {
   failed_save_payment_method: "Ödeme yöntemi kaydedilemedi",
   unknown_error: "Bilinmeyen hata, lütfen tekrar deneyin.",
   error_saving_notification_data: "Bildirim verisi kaydedilirken hata oluştu",
-  error_sending_notification: "Bildirim gönderilirken hata oluştu"
+  error_sending_notification: "Bildirim gönderilirken hata oluştu",
+  delete_account_confirmation: "Hesabınızı silmek istediğinizden emin misiniz?",
+  this_will_delete_all_data: "Bu tüm verilerinizi silecek ve geri alınamaz. Devam etmek istiyor musunuz?",
+  success: "Başarılı",
+  copied_to_clipboard: "Panoya kopyalandı",
+  // Calendar
+  price: "Price",
+  category: "Category",
+  paid_by: "Paid by",
+  payment_method: "Payment method",
+  notes: "Notes",
+  export: "Export",
 }
 
 
